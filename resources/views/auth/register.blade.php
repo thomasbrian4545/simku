@@ -10,46 +10,64 @@
                 <p class="login-box-msg">Register a new membership</p>
 
                 <form action="{{ route('users.store') }}" method="post">
+                    @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="fullname" placeholder="Full name">
+                        <input type="text" id="fullname" name="fullname" value="{{ old('fullname') }}"
+                            placeholder="Full name" class="form-control @error('fullname') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
                             </div>
                         </div>
                     </div>
+                    @error('fullname')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="username" placeholder="User name">
+                        <input type="text" id="username" name="username" value="{{ old('username') }}"
+                            placeholder="User name" class="form-control @error('username') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-user-tie"></span>
                             </div>
                         </div>
                     </div>
+                    @error('username')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" id="email" name="email" value="{{ old('email') }}"
+                            placeholder="Email" class="form-control @error('email') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
                             </div>
                         </div>
                     </div>
+                    @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                        <input type="password" id="password" name="password" value="{{ old('password') }}"
+                            placeholder="Password" class="form-control @error('password') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Retype password">
+                    @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    {{-- <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="password_confirmation"
+                            placeholder="Retype password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
