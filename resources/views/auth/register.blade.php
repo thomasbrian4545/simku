@@ -9,7 +9,14 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
-
+                <div class="mt-5">
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                </div>
                 <form action="{{ route('registerStore') }}" method="post">
                     @csrf
                     @error('fullname')

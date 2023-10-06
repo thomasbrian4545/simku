@@ -21,11 +21,11 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended(route('dashboard'));
         }
-        return redirect(route('/'))->with("error", "Login details are not valid");
+        return redirect(route('login'))->with("error", "Login details are not valid");
     }
 
     public function register()

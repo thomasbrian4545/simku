@@ -9,7 +9,14 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
-
+                <div class="mt-5">
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                    @endif
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                    @endif
+                </div>
                 <form action="{{ route('loginStore') }}" method="post">
                     @csrf
                     @error('username')
