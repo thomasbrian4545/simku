@@ -56,7 +56,11 @@
                         <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ auth()->user()->fullname }}</a>
+                        <a href="#" class="d-block">
+                            @auth
+                                {{ auth()->user()->fullname }}
+                            @endauth
+                        </a>
                     </div>
                 </div>
 
@@ -75,8 +79,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">
+                                <i class="nav-icon fas fa-columns"></i>
+                                <p>
+                                    Logout
+                                </p>
+                            </a>
+                        </li>
                     </ul>
-
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

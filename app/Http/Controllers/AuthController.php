@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 class AuthController extends Controller
 {
     public function login()
     {
+        if (Auth::check()) {
+            return redirect(route('dashboard'));
+        }
         return view('auth.login');
     }
 
@@ -30,6 +33,9 @@ class AuthController extends Controller
 
     public function register()
     {
+        if (Auth::check()) {
+            return redirect(route('dashboard'));
+        }
         return view('auth.register');
     }
 
@@ -50,6 +56,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return redirect(route('/'));
+        return redirect(route('login'));
     }
 }
