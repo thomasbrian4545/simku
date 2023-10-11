@@ -19,13 +19,19 @@ class AuthController extends Controller
 
     public function loginStore(Request $request)
     {
-        $request->validate([
-            'username' => 'required',
+        $this->validate($request, [
+            'sss' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials)) {
+        $login_type = filter_var($request->input('sss'), FILTER_VALIDATE_EMAIL)
+            ? 'email'
+            : 'username';
+
+        if (Auth::attempt([
+            $login_type => $request->input('sss'),
+            'password' =>$request->input('password')
+        ])) {
             return redirect()->intended(route('dashboard'));
         }
         return redirect(route('login'))->with("error", "Login details are not valid");

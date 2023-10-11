@@ -19,12 +19,12 @@
                 </div>
                 <form action="{{ route('loginStore') }}" method="post">
                     @csrf
-                    @error('username')
+                    @error('sss')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                     <div class="input-group mb-3">
-                        <input type="text" id="username" name="username" value="{{ old('username') }}"
-                            placeholder="User name" class="form-control @error('username') is-invalid @enderror">
+                        <input type="text" id="sss" name="sss" value="{{ old('sss') }}"
+                            placeholder="User name" class="form-control @error('sss') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
