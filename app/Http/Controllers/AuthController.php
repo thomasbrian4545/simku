@@ -17,7 +17,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function loginStore(Request $request)
+    public function login_store(Request $request)
     {
         $this->validate($request, [
             'sss' => 'required',
@@ -34,7 +34,7 @@ class AuthController extends Controller
         ])) {
             return redirect()->intended(route('dashboard'));
         }
-        return redirect(route('login'))->with("error", "Login details are not valid");
+        return redirect(route('login'))->with("error", "Login tidak valid");
     }
 
     public function register()
@@ -45,7 +45,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function registerStore(Request $request)
+    public function register_store(Request $request)
     {
         $validateData = $request->validate([
             'fullname' => 'required',
@@ -54,7 +54,7 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
         User::create($validateData);
-        return redirect(route('login'))->with("success", "Registration success, Login to access the app");
+        return redirect(route('login'))->with("success", "Registrasi sukses, Login untuk mengakses aplikasi");
     }
 
 

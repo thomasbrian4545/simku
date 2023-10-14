@@ -17,7 +17,7 @@
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
                 </div>
-                <form action="{{ route('registerStore') }}" method="post">
+                <form action="{{ route('register.store') }}" method="post">
                     @csrf
                     @error('fullname')
                         <div class="text-danger">{{ $message }}</div>

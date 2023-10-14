@@ -12,7 +12,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return "Tabel mahasiswa di sini";
     }
 
     /**
@@ -20,7 +20,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mahasiswa.form');
     }
 
     /**
@@ -28,7 +28,14 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nim' => 'required|size:8',
+            'nama_lengkap' => 'required|min:3|max:50',
+            'jenis_kelamin' => 'required|in:P,L',
+            'jurusan' => 'required',
+            'alamat' => '',
+        ]);
+        dump($validateData);
     }
 
     /**
