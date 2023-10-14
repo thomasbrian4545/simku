@@ -24,7 +24,7 @@
                     @enderror
                     <div class="input-group mb-3">
                         <input type="text" id="sss" name="sss" value="{{ old('sss') }}"
-                            placeholder="User name" class="form-control @error('sss') is-invalid @enderror">
+                            placeholder="User name / Email" class="form-control @error('sss') is-invalid @enderror">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
