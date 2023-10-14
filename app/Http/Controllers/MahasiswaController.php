@@ -35,7 +35,10 @@ class MahasiswaController extends Controller
             'jurusan' => 'required',
             'alamat' => '',
         ]);
-        dump($validateData);
+        //dump($validateData);
+
+        Mahasiswa::create($validateData);
+        return "Data mahasiswa berhasil diinput ke database.";
     }
 
     /**
