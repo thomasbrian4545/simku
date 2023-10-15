@@ -92,7 +92,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="forms/general.html" class="nav-link">
+                                    <a href="{{ route('mahasiswas.index') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Mahasiswa</p>
                                     </a>
