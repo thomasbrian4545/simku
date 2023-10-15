@@ -20,6 +20,11 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
+            @if (session()->has('pesan'))
+                <div class="alert alert-success">
+                    {{ session()->get('pesan') }}
+                </div>
+            @endif
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">

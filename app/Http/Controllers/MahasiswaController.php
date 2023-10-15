@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
         //dump($validateData);
 
         Mahasiswa::create($validateData);
-        return "Data mahasiswa berhasil diinput ke database.";
+        return redirect()->route('mahasiswas.index')->with('pesan', "Penambahan data {$validateData['nama_lengkap']} berhasil");
     }
 
     /**
