@@ -55,7 +55,7 @@ class MahasiswaController extends Controller
      */
     public function edit(Mahasiswa $mahasiswa)
     {
-        //
+        return view('mahasiswa.edit', ['mahasiswa' => $mahasiswa]);
     }
 
     /**

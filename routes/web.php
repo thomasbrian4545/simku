@@ -32,4 +32,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/mahasiswas/create', [MahasiswaController::class, 'create'])->name('mahasiswas.create');
     Route::post('/mahasiswas', [MahasiswaController::class, 'store'])->name('mahasiswas.store');
     Route::get('/mahasiswas/{mahasiswa}', [MahasiswaController::class,'show'])->name('mahasiswas.show');
+    Route::get('/mahasiswas/{mahasiswa}/edit', [MahasiswaController::class,'edit'])->name('mahasiswas.edit');
 });
