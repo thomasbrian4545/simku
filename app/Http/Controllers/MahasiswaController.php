@@ -21,7 +21,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('mahasiswa.form');
+        return view('mahasiswa.create');
     }
 
     /**
