@@ -23,8 +23,12 @@
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
+                    <a href="{{ route('mahasiswas.create') }}" class="btn btn-primary">
+                        Tambah Mahasiswa
+                    </a>
                     <!-- general form elements -->
                     <div class="card-body">
+
                         <table id="table1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -40,7 +44,8 @@
                                 @forelse ($mahasiswas as $mahasiswa)
                                     <tr>
                                         <th>{{ $loop->iteration }}</th>
-                                        <td>{{ $mahasiswa->nim }}</td>
+                                        <td><a href="{{ url('/mahasiswas/' . $mahasiswa->id) }}">{{ $mahasiswa->nim }}</a>
+                                        </td>
                                         <td>{{ $mahasiswa->nama_lengkap }}</td>
                                         <td>{{ $mahasiswa->jenis_kelamin == 'P' ? 'Perempuan' : 'Laki-laki' }}</td>
                                         <td>{{ $mahasiswa->jurusan }}</td>
