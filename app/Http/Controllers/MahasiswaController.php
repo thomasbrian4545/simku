@@ -64,6 +64,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
+        $this->authorize('update', $mahasiswa);
         $validateData = $request->validate([
             'nim' => 'required|size:8|unique:mahasiswas,nim,' . $mahasiswa->id,
             'nama_lengkap' => 'required|min:3|max:50',

@@ -15,9 +15,10 @@
                 </div>
                 <div class="d-flex col-sm-12">
                     <hr>
-                    <a href="{{ route('mahasiswas.edit', ['mahasiswa' => $mahasiswa->id]) }}"
-                        class="btn btn-warning">Edit</a>
-
+                    @can('update', $mahasiswa)
+                        <a href="{{ route('mahasiswas.edit', ['mahasiswa' => $mahasiswa->id]) }}"
+                            class="btn btn-warning">Edit</a>
+                    @endcan
                     @can('delete', $mahasiswa)
                         ' '
                         <form method="POST" action="{{ route('mahasiswas.destroy', ['mahasiswa' => $mahasiswa->id]) }}">
