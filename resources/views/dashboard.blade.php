@@ -1,6 +1,5 @@
 @extends('layout.app')
 @section('title', 'Dashboard')
-@section('statusDashboard', 'active')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -20,7 +19,11 @@
 
     <!-- Main content -->
     <section class="content">
-        <p>Selamat datang, {{ auth()->user() }}</p>
+        <div class="container-fluid">
+            <div class="col-md-6">
+                <p>Selamat datang, {{ auth()->user()->fullname }}</p>
+            </div>
+        </div>
     </section>
     <!-- /.content -->
 @endsection
