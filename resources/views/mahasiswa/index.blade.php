@@ -28,9 +28,11 @@
             <div class="row">
                 <!-- left column -->
                 <div class="col-md-12">
-                    <a href="{{ route('mahasiswas.create') }}" class="btn btn-primary">
-                        Tambah Mahasiswa
-                    </a>
+                    @can('create', App\Models\Mahasiswa::class)
+                        <a href="{{ route('mahasiswas.create') }}" class="btn btn-primary">
+                            Tambah Mahasiswa
+                        </a>
+                    @endcan
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
 

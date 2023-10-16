@@ -29,6 +29,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Mahasiswa::class);
         $validateData = $request->validate([
             'nim' => 'required|size:8|unique:mahasiswas',
             'nama_lengkap' => 'required|min:3|max:50',
