@@ -63,7 +63,16 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, Mahasiswa $mahasiswa)
     {
-        //
+        $validateData = $request->validate([
+            'nim' => 'required|size:8|unique:mahasiswas,nim,' . $mahasiswa->id,
+            'nama_lengkap' => 'required|min:3|max:50',
+            'jenis_kelamin' => 'required|in:P,L',
+            'jurusan' => 'required',
+            'alamat' => '',
+        ]);
+        $mahasiswa->update($validateData);
+        return redirect()->route('mahasiswas.show', ['mahasiswa' => $mahasiswa->id])
+            ->with('pesan', "Update data {$validateData['nama_lengkap']} berhasil");
     }
 
     /**
@@ -71,6 +80,8 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswas.index')
+            ->with('pesan', "Hapus data $mahasiswa->nama_lengkap berhasil");
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.app')
 @section('title', 'Data Mahasiswa')
 @section('content')
     <!-- Content Header (Page header) -->
@@ -32,12 +32,12 @@
                         Tambah Mahasiswa
                     </a>
                     <!-- general form elements -->
-                    <div class="card-body">
+                    <div class="card-body table-responsive p-0">
 
-                        <table id="table1" class="table table-bordered table-striped">
+                        <table id="#" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>No</th>
                                     <th>NIM</th>
                                     <th>Nama Lengkap</th>
                                     <th>Jenis Kelamin</th>
@@ -48,7 +48,7 @@
                             <tbody>
                                 @forelse ($mahasiswas as $mahasiswa)
                                     <tr>
-                                        <th>{{ $loop->iteration }}</th>
+                                        <td>{{ $loop->iteration }}</td>
                                         <td><a href="{{ url('/mahasiswas/' . $mahasiswa->id) }}">{{ $mahasiswa->nim }}</a>
                                         </td>
                                         <td>{{ $mahasiswa->nama_lengkap }}</td>

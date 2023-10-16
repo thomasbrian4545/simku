@@ -1,16 +1,16 @@
 @extends('layout.app')
-@section('title', 'Pendaftaran Mahasiswa')
+@section('title', 'Edit Mahasiswa')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Pendaftaran Mahasiswa</h1>
+                    <h1>Edit Mahasiswa</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Pendaftaran Mahasiswa</a></li>
+                        <li class="breadcrumb-item"><a href="#">Edit Mahasiswa</a></li>
                     </ol>
                 </div>
             </div>
@@ -27,8 +27,9 @@
                     <div class="card card-primary">
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{ route('mahasiswas.store') }}" method="POST">
-                            @include('layout.form',['tombol' => 'Daftar'])
+                        <form action="{{ route('mahasiswas.update', ['mahasiswa' => $mahasiswa->id]) }}" method="POST">
+                            @method('PUT')
+                            @include('layout.form', ['tombol' => 'Edit'])
                         </form>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
-@extends('layout.master')
+@extends('layout.app')
 @section('title', 'Dashboard')
+@section('statusDashboard', 'active')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
