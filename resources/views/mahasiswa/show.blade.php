@@ -16,12 +16,16 @@
                 <div class="d-flex col-sm-12">
                     <hr>
                     <a href="{{ route('mahasiswas.edit', ['mahasiswa' => $mahasiswa->id]) }}"
-                        class="btn btn-warning">Edit</a>' '
-                    <form method="POST" action="{{ route('mahasiswas.destroy', ['mahasiswa' => $mahasiswa->id]) }}">
-                        @method('DELETE')
-                        @csrf
-                        <button type="submit" class="btn btn-danger ms-3">Hapus</button>
-                    </form>
+                        class="btn btn-warning">Edit</a>
+
+                    @can('delete', $mahasiswa)
+                        ' '
+                        <form method="POST" action="{{ route('mahasiswas.destroy', ['mahasiswa' => $mahasiswa->id]) }}">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="btn btn-danger ms-3">Hapus</button>
+                        </form>
+                    @endcan
                 </div>
             </div>
         </div><!-- /.container-fluid -->

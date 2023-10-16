@@ -81,6 +81,7 @@ class MahasiswaController extends Controller
      */
     public function destroy(Mahasiswa $mahasiswa)
     {
+        $this->authorize('delete', $mahasiswa);
         $mahasiswa->delete();
         return redirect()->route('mahasiswas.index')
             ->with('pesan', "Hapus data $mahasiswa->nama_lengkap berhasil");

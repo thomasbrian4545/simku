@@ -45,7 +45,9 @@ class MahasiswaPolicy
      */
     public function delete(User $user, Mahasiswa $mahasiswa): bool
     {
-        //
+        return in_array($user->email,[
+            'admin@gmail.com'
+        ]);
     }
 
     /**
