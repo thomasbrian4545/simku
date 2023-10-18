@@ -13,21 +13,6 @@
                         <li class="breadcrumb-item"><a href="#">Profil Mahasiswa</a></li>
                     </ol>
                 </div>
-                <div class="d-flex col-sm-12">
-                    <hr>
-                    @can('update', $mahasiswa)
-                        <a href="{{ route('mahasiswas.edit', ['mahasiswa' => $mahasiswa->id]) }}"
-                            class="btn btn-warning">Edit</a>
-                    @endcan
-                    @can('delete', $mahasiswa)
-                        ' '
-                        <form method="POST" action="{{ route('mahasiswas.destroy', ['mahasiswa' => $mahasiswa->id]) }}">
-                            @method('DELETE')
-                            @csrf
-                            <button type="submit" class="btn btn-danger ms-3">Hapus</button>
-                        </form>
-                    @endcan
-                </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>

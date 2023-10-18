@@ -51,7 +51,7 @@ class MahasiswaController extends Controller
         //dump($validateData);
 
         Mahasiswa::create($validateData);
-        return redirect()->route('mahasiswas.index')->with('pesan', "Penambahan data {$validateData['nama_lengkap']} berhasil");
+        return redirect()->route('mahasiswas.index')->with('pesan', "Tambah data : {$validateData['nama_lengkap']} berhasil");
     }
 
     /**
@@ -84,8 +84,8 @@ class MahasiswaController extends Controller
             'alamat' => '',
         ]);
         $mahasiswa->update($validateData);
-        return redirect()->route('mahasiswas.show', ['mahasiswa' => $mahasiswa->id])
-            ->with('pesan', "Update data {$validateData['nama_lengkap']} berhasil");
+        return redirect()->route('mahasiswas.index', ['mahasiswa' => $mahasiswa->id])
+            ->with('pesan', "Update data : {$validateData['nama_lengkap']} berhasil");
     }
 
     /**
@@ -96,6 +96,6 @@ class MahasiswaController extends Controller
         $this->authorize('delete', $mahasiswa);
         $mahasiswa->delete();
         return redirect()->route('mahasiswas.index')
-            ->with('pesan', "Hapus data $mahasiswa->nama_lengkap berhasil");
+            ->with('pesan', "Hapus data : $mahasiswa->nama_lengkap berhasil");
     }
 }
