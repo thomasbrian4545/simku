@@ -25,8 +25,7 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            {{-- <h3>{{ $totalMahasiswas }}</h3> --}}
-                            <h3>#</h3>
+                            <h3>{{ $totalMahasiswas }}</h3>
                             <p>Mahasiswa</p>
                         </div>
                         <div class="icon">

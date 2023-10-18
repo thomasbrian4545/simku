@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
+use App\Models\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +26,11 @@ Route::post('/register', [AuthController::class, 'register_store'])->name('regis
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('mahasiswas', MahasiswaController::class);
 });
 
 Route::get('/test-faker', function () {
-
     $jenis_kelamin = ["L", "P"];
     $daftar_jurusan = ["Teknik Informatika", "Sistem Informasi", "Ilmu Komputer", "Teknik Komputer", "Teknik Telekomunikasi"];
     $faker = \Faker\Factory::create('id_ID');
