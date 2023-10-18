@@ -57,9 +57,12 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 1 + (($mahasiswas->currentPage()-1) * $mahasiswas->perPage());
+                                @endphp
                                 @forelse ($mahasiswas as $mahasiswa)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $no++ }}</td>
                                         <td><a href="{{ url('/mahasiswas/' . $mahasiswa->id) }}">{{ $mahasiswa->nim }}</a>
                                         </td>
                                         <td>{{ $mahasiswa->nama_lengkap }}</td>
