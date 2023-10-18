@@ -35,7 +35,7 @@
                     @endcan
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
-                        <table id="#" class="table table-hover text-nowrap">
+                        <table id="tblMahasiswas" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
                                     <th>No</th>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="col-md-12">
                     <br>
-                    {{ $mahasiswas->links() }}
+                    {{ $mahasiswas->fragment('tblMahasiswas')->links() }}
                 </div>
             </div>
         </div>
