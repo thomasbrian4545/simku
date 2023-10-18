@@ -30,3 +30,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::resource('mahasiswas', MahasiswaController::class);
 });
+
+Route::get('/test-faker', function () {
+
+    $jenis_kelamin = ["L", "P"];
+    $daftar_jurusan = ["Teknik Informatika", "Sistem Informasi", "Ilmu Komputer", "Teknik Komputer", "Teknik Telekomunikasi"];
+    $faker = \Faker\Factory::create('id_ID');
+    echo $faker->randomNumber(8) . "<br>";
+    echo $faker->firstName() . " " . $faker->lastName() . "<br>";
+    echo $faker->randomElement($jenis_kelamin) . "<br>";
+    echo $faker->randomElement($daftar_jurusan) . "<br>";
+});
