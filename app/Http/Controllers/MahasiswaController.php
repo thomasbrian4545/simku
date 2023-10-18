@@ -17,6 +17,9 @@ class MahasiswaController extends Controller
             $mahasiswas = Mahasiswa::sortable()
                 ->where('mahasiswas.nim', 'like', '%' . $cari . '%')
                 ->orWhere('mahasiswas.nama_lengkap', 'like', '%' . $cari . '%')
+                ->orWhere('mahasiswas.jenis_kelamin', 'like', '%' . $cari . '%')
+                ->orWhere('mahasiswas.jurusan', 'like', '%' . $cari . '%')
+                ->orWhere('mahasiswas.alamat', 'like', '%' . $cari . '%')
                 ->paginate(5)->fragment('tblMahasiswas');
         } else {
             $mahasiswas = Mahasiswa::sortable()->paginate(5)->fragment('tblMahasiswas');
