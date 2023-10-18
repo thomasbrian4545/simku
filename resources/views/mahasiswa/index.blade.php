@@ -39,11 +39,11 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>NIM</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Jurusan</th>
-                                    <th>Alamat</th>
+                                    <th>@sortablelink('nim','NIM')</th>
+                                    <th>@sortablelink('nama_lengkap','Nama Lengkap')</th>
+                                    <th>@sortablelink('jenis_kelamin','Jenis Kelamin')</th>
+                                    <th>@sortablelink('jurusan','Jurusan')</th>
+                                    <th>@sortablelink('alamat','Alamat')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,7 +66,8 @@
                 </div>
                 <div class="col-md-12">
                     <br>
-                    {{ $mahasiswas->fragment('tblMahasiswas')->links() }}
+                    {{-- {{ $mahasiswas->fragment('tblMahasiswas')->links() }} --}}
+                    {!! $mahasiswas->appends(Request::except('page'))->render() !!}
                 </div>
             </div>
         </div>

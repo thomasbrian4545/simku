@@ -12,7 +12,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::paginate(10);
+        $mahasiswas = Mahasiswa::sortable()->paginate(10)->fragment('tblMahasiswas');
         return view('mahasiswa.index', ['mahasiswas' => $mahasiswas]);
     }
 
