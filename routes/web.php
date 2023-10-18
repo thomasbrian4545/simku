@@ -40,4 +40,5 @@ Route::get('/test-faker', function () {
     echo $faker->firstName() . " " . $faker->lastName() . "<br>";
     echo $faker->randomElement($jenis_kelamin) . "<br>";
     echo $faker->randomElement($daftar_jurusan) . "<br>";
+    echo $faker->address();
 });

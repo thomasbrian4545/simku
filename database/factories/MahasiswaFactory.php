@@ -16,8 +16,14 @@ class MahasiswaFactory extends Factory
      */
     public function definition(): array
     {
+        $jenis_kelamin = ["L", "P"];
+        $daftar_jurusan = ["Teknik Informatika", "Sistem Informasi", "Ilmu Komputer", "Teknik Komputer", "Teknik Telekomunikasi"];
         return [
-            //
+            'nim' => $this->faker->randomNumber(8),
+            'nama_lengkap' => $this->faker->firstName() . " " . $this->faker->lastName(),
+            'jenis_kelamin' => $this->faker->randomElement($jenis_kelamin),
+            'jurusan' => $this->faker->randomElement($daftar_jurusan),
+            'alamat' => $this->faker->address(),
         ];
     }
 }
