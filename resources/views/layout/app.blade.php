@@ -11,6 +11,8 @@
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
@@ -23,9 +25,10 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
-              </ul>
+            </ul>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
@@ -75,7 +78,8 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link {{ 'dashboard' == request()->path() ? 'active' : '' }}">
+                            <a href="{{ route('dashboard') }}"
+                                class="nav-link {{ 'dashboard' == request()->path() ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
@@ -92,7 +96,8 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('mahasiswas.index') }}" class="nav-link  {{ 'mahasiswas' == request()->path() ? 'active' : '' }}">
+                                    <a href="{{ route('mahasiswas.index') }}"
+                                        class="nav-link  {{ 'mahasiswas' == request()->path() ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Mahasiswa</p>
                                     </a>
