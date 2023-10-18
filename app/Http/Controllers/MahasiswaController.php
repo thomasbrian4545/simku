@@ -12,7 +12,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswas = Mahasiswa::all();
+        $mahasiswas = Mahasiswa::paginate(10);
         return view('mahasiswa.index', ['mahasiswas' => $mahasiswas]);
     }
 

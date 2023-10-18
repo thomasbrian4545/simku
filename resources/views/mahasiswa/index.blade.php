@@ -64,6 +64,10 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <br>
+                    {{ $mahasiswas->links() }}
+                </div>
             </div>
         </div>
     </section>
