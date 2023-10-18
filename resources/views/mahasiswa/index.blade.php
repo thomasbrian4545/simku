@@ -35,6 +35,16 @@
                     @endcan
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
+                        <form method="GET">
+                            <div class="form-group row">
+                                <label for="" class="col-sm-2 col-form-label">
+                                    Cari Data
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="cari" id="cari" class="form-control" placeholder="Cari data..." autofocus="true" value="{{ $cari }}">
+                                </div>
+                            </div>
+                        </form>
                         <table id="tblMahasiswas" class="table table-hover text-nowrap">
                             <thead>
                                 <tr>

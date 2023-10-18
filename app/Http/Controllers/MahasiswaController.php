@@ -10,10 +10,18 @@ class MahasiswaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $mahasiswas = Mahasiswa::sortable()->paginate(10)->fragment('tblMahasiswas');
-        return view('mahasiswa.index', ['mahasiswas' => $mahasiswas]);
+        $cari = $request->query('cari');
+        if (!empty($cari)) {
+            $mahasiswas = Mahasiswa::sortable()
+                ->where('mahasiswas.nim', 'like', '%' . $cari . '%')
+                ->orWhere('mahasiswas.nama_lengkap', 'like', '%' . $cari . '%')
+                ->paginate(5)->fragment('tblMahasiswas');
+        } else {
+            $mahasiswas = Mahasiswa::sortable()->paginate(5)->fragment('tblMahasiswas');
+        }
+        return view('mahasiswa.index', ['mahasiswas' => $mahasiswas, 'cari' => $cari,]);
     }
 
     /**
