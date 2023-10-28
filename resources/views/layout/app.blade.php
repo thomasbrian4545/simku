@@ -97,7 +97,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('mahasiswas.index') }}"
-                                        class="nav-link  {{ 'mahasiswas' == request()->path() ? 'active' : '' }}">
+                                        class="nav-link  {{ Route::is('mahasiswas.*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Mahasiswa</p>
                                     </a>

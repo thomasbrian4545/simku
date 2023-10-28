@@ -32,6 +32,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
+        // dd(Mahasiswa::find("54894345"));
         return view('mahasiswa.create');
     }
 
@@ -50,7 +51,11 @@ class MahasiswaController extends Controller
         ]);
         //dump($validateData);
 
-        Mahasiswa::create($validateData);
+        $mahasiswa = Mahasiswa::create($validateData);
+        // dd($mahasiswa);
+        $mahasiswa->jurusan = null;
+        $mahasiswa->save();
+
         return redirect()->route('mahasiswas.index')->with('pesan', "Tambah data : {$validateData['nama_lengkap']} berhasil");
     }
 

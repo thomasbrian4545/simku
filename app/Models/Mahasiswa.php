@@ -12,5 +12,8 @@ class Mahasiswa extends Model
     use Sortable;
     protected $guarded = [];
 
+    protected $primaryKey = 'nim';
+    protected $keyType='string';
+
     public $sortable = ['nim', 'nama_lengkap', 'jenis_kelamin', 'jurusan', 'alamat'];
 }

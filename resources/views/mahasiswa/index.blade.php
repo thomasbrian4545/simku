@@ -68,7 +68,8 @@
                                 @forelse ($mahasiswas as $mahasiswa)
                                     <tr>
                                         <td>{{ $no++ }}</td>
-                                        <td><a href="{{ url('/mahasiswas/' . $mahasiswa->id) }}">{{ $mahasiswa->nim }}</a>
+                                        <td><a
+                                                href="{{ route('mahasiswas.show', $mahasiswa->nim) }}">{{ $mahasiswa->nim }}</a>
                                         </td>
                                         <td>{{ $mahasiswa->nama_lengkap }}</td>
                                         <td>{{ $mahasiswa->jenis_kelamin == 'P' ? 'Perempuan' : 'Laki-laki' }}</td>
@@ -83,7 +84,8 @@
                                                 </button>
                                             @endcan
                                             @can('delete', $mahasiswa)
-                                                <form onsubmit="return deleteData('{{ $mahasiswa->nama_lengkap }}')" style="display: inline" method="POST"
+                                                <form onsubmit="return deleteData('{{ $mahasiswa->nama_lengkap }}')"
+                                                    style="display: inline" method="POST"
                                                     action="{{ route('mahasiswas.destroy', ['mahasiswa' => $mahasiswa->id]) }}">
                                                     @method('DELETE')
                                                     @csrf
@@ -110,7 +112,7 @@
     </section>
     <!-- /.content -->
     <script>
-        function deleteData(nama_lengkap){
+        function deleteData(nama_lengkap) {
             message = confirm(`Yakin data ${nama_lengkap} dihapus?`);
             if (message) return true;
             else return false;
