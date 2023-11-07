@@ -26,7 +26,8 @@
                         <table id="tblDosens" class="table table-hover text-nowrap">
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
-                                    <input type="text" wire:model.live='q' class="form-control" placeholder="Search...">
+                                    <input type="text" wire:model.live='q' class="form-control"
+                                        placeholder="Search...">
                                 </div>
                                 <div class="col-auto">
                                     <select wire:model.live='perPage' class="form-control">
@@ -35,6 +36,12 @@
                                         <option value="50">50</option>
                                         <option value="100">100</option>
                                     </select>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#modal-default">
+                                        {{ $formTitle }}
+                                    </button>
                                 </div>
                             </div>
                             <thead>
@@ -45,21 +52,73 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    $no = 1 + ($dosens->currentPage() - 1) * $dosens->perPage();
+                                @endphp
                                 @forelse ($dosens as $dosen)
                                     <tr>
-                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $no++ }}</td>
                                         <td>{{ $dosen->nama_lengkap }}</td>
+                                        <td><button @click="$dispatch('edit-mode',{id:{{ $dosen->id }}})"
+                                                type="button" class="btn btn-warning btn-sm" data-toggle="modal"
+                                                data-target="#modal-default"><i class="fas fa-edit"></i></button></td>
                                     </tr>
                                 @empty
                                     <td colspan="12" class="text-center">Tidak ada data...</td>
                                 @endforelse
                             </tbody>
                         </table>
-                        <span>{{ $dosens->links() }}</span>
+                        <span>
+                            {{-- {{ $dosens->links() }} --}}
+                            {!! $dosens->appends(Request::except('page'))->render() !!}
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- /.content -->
+    <div wire:ignore.self class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ $formTitle }}</h4>
+                    <button wire:click='close' type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">{{ session('status') }}</div>
+                    @endif
+                    <form>
+                        <div class="form-group">
+                            <label>Nama Lengkap</label>
+                            <input wire:model='nama_lengkap' type="text"
+                                class="form-control @error('nama_lengkap')
+                                is-invalid
+                            @enderror">
+                            @error('nama_lengkap')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    @if ($formEdit)
+                        <button wire:click='close' type="button" class="btn btn-default"
+                            data-dismiss="modal">Batal</button>
+                        <button wire:click='update' type="button" class="btn btn-warning">Edit</button>
+                    @else
+                        <button wire:click='close' type="button" class="btn btn-default"
+                            data-dismiss="modal">Batal</button>
+                        <button wire:click='save' type="button" class="btn btn-primary">Simpan</button>
+                    @endif
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 </div>
