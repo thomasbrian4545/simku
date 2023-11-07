@@ -24,6 +24,19 @@
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
                         <table id="tblDosens" class="table table-hover text-nowrap">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
+                                    <input type="text" wire:model.live='q' class="form-control" placeholder="Search...">
+                                </div>
+                                <div class="col-auto">
+                                    <select wire:model.live='perPage' class="form-control">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </div>
+                            </div>
                             <thead>
                                 <tr>
                                     <th>No</th>
