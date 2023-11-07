@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Dosens;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -28,6 +29,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('mahasiswas', MahasiswaController::class);
+    Route::get('dosens', Dosens::class);
 });
 
 Route::get('/test-faker', function () {
