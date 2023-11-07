@@ -103,7 +103,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{ route('dosens') }}"
+                                        class="nav-link {{ Route::is('dosens.*') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Dosen</p>
                                     </a>
