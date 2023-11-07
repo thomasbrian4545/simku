@@ -23,6 +23,26 @@
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
+                        <table id="tblDosens" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse ($dosens as $dosen)
+                                    <tr>
+                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $dosen->nama_lengkap }}</td>
+                                    </tr>
+                                @empty
+                                    <td colspan="12" class="text-center">Tidak ada data...</td>
+                                @endforelse
+                            </tbody>
+                        </table>
+                        <span>{{ $dosens->links() }}</span>
                     </div>
                 </div>
             </div>
