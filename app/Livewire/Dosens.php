@@ -15,7 +15,7 @@ class Dosens extends Component
     public $perPage = 10;
 
     public $dosen;
-    public $formTitle = 'Tambah Dosen';
+    public $formTitle;
     public $formEdit = false;
     #[Rule('required')]
     public $nama_lengkap;
@@ -41,10 +41,11 @@ class Dosens extends Component
     public function save()
     {
         Dosen::create($this->validate());
-        session()->flash('status', 'Dosen berhasil ditambahkan.');
         $this->reset();
+        session()->flash('status', 'Dosen berhasil ditambahkan.');
     }
 
+    #[On('reset-modal')]
     public function close()
     {
         $this->reset();
@@ -54,7 +55,7 @@ class Dosens extends Component
     public function edit($id)
     {
         $this->formEdit = true;
-        $this->formTitle = 'Edit Dosen';
+        $this->formTitle = 'Edit';
         $this->dosen = Dosen::findOrfail($id);
         $this->nama_lengkap = $this->dosen->nama_lengkap;
     }
@@ -62,6 +63,7 @@ class Dosens extends Component
     public function update()
     {
         Dosen::findOrFail($this->dosen->id)->update($this->validate());
+        $this->reset();
         session()->flash('status', 'Dosen berhasil diedit.');
     }
 }

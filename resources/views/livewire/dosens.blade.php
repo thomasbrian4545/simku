@@ -24,6 +24,9 @@
                     <!-- general form elements -->
                     <div class="card-body table-responsive p-0">
                         <table id="tblDosens" class="table table-hover text-nowrap">
+                            @if (session('status'))
+                                <div class="alert alert-success">{{ session('status') }}</div>
+                            @endif
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
                                     <input type="text" wire:model.live='q' class="form-control"
@@ -38,9 +41,10 @@
                                     </select>
                                 </div>
                                 <div class="col-auto">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    <button @click="$dispatch('reset-modal')"
+                                        type="button" class="btn btn-primary btn" data-toggle="modal"
                                         data-target="#modal-default">
-                                        {{ $formTitle }}
+                                        Tambah
                                     </button>
                                 </div>
                             </div>
@@ -69,8 +73,8 @@
                             </tbody>
                         </table>
                         <span>
-                            {{-- {{ $dosens->links() }} --}}
-                            {!! $dosens->appends(Request::except('page'))->render() !!}
+                            {{ $dosens->links() }}
+                            {{-- {!! $dosens->appends(Request::except('page'))->render() !!} --}}
                         </span>
                     </div>
                 </div>
@@ -82,15 +86,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ $formTitle }}</h4>
+                    <h4 class="modal-title">{{ $formTitle ?? 'Tambah' }}</h4>
                     <button wire:click='close' type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">{{ session('status') }}</div>
-                    @endif
                     <form>
                         <div class="form-group">
                             <label>Nama Lengkap</label>
@@ -108,11 +109,13 @@
                     @if ($formEdit)
                         <button wire:click='close' type="button" class="btn btn-default"
                             data-dismiss="modal">Batal</button>
-                        <button wire:click='update' type="button" class="btn btn-warning">Edit</button>
+                        <button wire:click='update' type="button" class="btn btn-warning"
+                            data-dismiss="modal">Edit</button>
                     @else
                         <button wire:click='close' type="button" class="btn btn-default"
                             data-dismiss="modal">Batal</button>
-                        <button wire:click='save' type="button" class="btn btn-primary">Simpan</button>
+                        <button wire:click='save' type="button" class="btn btn-primary"
+                            data-dismiss="modal">Simpan</button>
                     @endif
                 </div>
             </div>
