@@ -1,11 +1,14 @@
 <?php
 
 use App\Livewire\Dosens;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MahasiswaController;
 use App\Models\Dashboard;
+use App\Models\LogActivity;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +33,26 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('mahasiswas', MahasiswaController::class);
     Route::get('dosens', Dosens::class)->name('dosens');
+    Route::get('products', function () {
+        try {
+            //code...
+            DB::beginTransaction();
+            Product::create([
+                'name' => 'Pepsos',
+                'price' => 4444,
+            ]);
+
+            Product::create([
+                'name' => 'Jeruk 2',
+                'price' => 3333,
+            ]);
+
+            DB::commit();
+        } catch (\Throwable $th) {
+            // throw $th;
+            DB::rollBack();
+        }
+    });
 });
 
 Route::get('/test-faker', function () {
